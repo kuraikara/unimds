@@ -1,20 +1,15 @@
-# Appunti per l'Esame Universitario sui Sistemi di Gestione della Configurazione (Configuration Management Systems)
-
 ## 1. Introduzione
 
-### Motivazione: Perché la gestione della configurazione software?
+### Motivazione: Perché usare i configuration Management Systems?
 
 - **Problemi affrontati:**
   - Collaborazione tra più persone su software in continua evoluzione.
-  - Supporto di più versioni del software:
-    - Releases: posso rilasciare versioni diverse del software.
-    - Sistemi configurati su misura (funzionalità diverse)
-    - Sistemi in sviluppo
+  - Supporto di più versioni del software
   - Esecuzione del software su diverse macchine e sistemi operativi
-- **Necessità di coordinamento:**
-  - Gestione dei sistemi software in evoluzione.
-  - Controllo dei costi legati alle modifiche di un sistema.
-  - Parte di un processo di gestione della qualità più generale.
+  - **Necessità di coordinamento:**
+    - Gestione dei sistemi software in evoluzione.
+    - Controllo dei costi legati alle modifiche di un sistema.
+    - Parte di un processo di gestione della qualità più generale.
 
 ## 2. Definizione e Attività della Gestione della Configurazione Software (SCM)
 
@@ -27,7 +22,7 @@ La gestione della configurazione software (SCM) è un insieme di pratiche ingegn
 - **Configuration Manager:** Identifica gli elementi di configurazione e definisce le procedure per creare promozioni e rilasci.
 - **Change Control Board Member:** Approva o rifiuta le richieste di modifica valutando l'impatto e la stabilità del sistema.
 - **Sviluppatore:** Crea promozioni(una cosa temporanea che dal local va disponibile a tutti) basate sulle richieste di modifica o attività di sviluppo normali, gestisce le modifiche e risolve i conflitti.
-- **Auditor:** Seleziona e valuta le promozioni per il rilascio(controllo del codice), garantendo coerenza e completezza.
+- **Auditor:** Seleziona e valuta le promozioni per il rilascio (review del codice), garantendo coerenza e completezza.
 
 ## 3. Scenari di Gestione della Configurazione
 
@@ -56,10 +51,10 @@ La gestione della configurazione software (SCM) è un insieme di pratiche ingegn
 Ci sono le promote/release policy, che definiscono chi può fare cosa e quando.+
 PROGRAMMATORE --> PROMOTION --> MASTER DIRECTORY --> RELEASE --> SOFTWARE REPOSITORY --> CLIENTI
 
-- **Promozione:** Modifica dello stato di sviluppo interno del software.
+- **Promozione:** Modifica dello stato di sviluppo interno del software. Promozione del codice da locale a remote
 - **Rilascio:** Distribuzione di un set di promozioni fuori dall'organizzazione di sviluppo.
 
-## 5. Politiche di Modifica
+## 5. Change policies
 
 ### Esempi di Politiche di Modifica:
 
@@ -71,15 +66,16 @@ PROGRAMMATORE --> PROMOTION --> MASTER DIRECTORY --> RELEASE --> SOFTWARE REPOSI
 - Le politiche formali sono adatte a rilasci esterni e grandi team.
 - Le politiche informali sono buone per ambienti di tipo ricerca.
 
-## 6. Piano di Gestione della Configurazione
+### Change tracking tool:
 
-### Componenti del Piano:
+- Derivation history, che permette di vedere come un file è stato modificato nel tempo. (commit. author, date)
+- Se un file ha tantissime modifiche, forse è il caso di fare refactoring.
 
-- Definizione delle responsabilità per le procedure di gestione della configurazione e creazione delle baseline.
-- Tipi di documenti/file da gestire e schema di denominazione.
-- Definizione delle politiche di controllo delle modifiche e gestione delle versioni.
-- Strumenti da utilizzare e limitazioni sul loro uso.
-- Processo di utilizzo degli strumenti.
+## 6. Configuration Management plan
+
+- Definisce chi è responsabile per le CM procedure
+- Definisce le policy
+- Descrive i tool che deveno essere usati
 
 ## 7. Strumenti per la Gestione della Configurazione
 
@@ -102,7 +98,7 @@ PROGRAMMATORE --> PROMOTION --> MASTER DIRECTORY --> RELEASE --> SOFTWARE REPOSI
 - Mercurial
 - Clearcase
 
-### Record keeping and collaboration
+### Obbiettivi del CMS:
 
 2 obbiettivi:
 
@@ -111,7 +107,7 @@ PROGRAMMATORE --> PROMOTION --> MASTER DIRECTORY --> RELEASE --> SOFTWARE REPOSI
 
 ### Terminologia (Esempio Git):
 
-- **Revisione:** Modifica confermata nella storia di un file o set di file. (uno snapshot del progetto diventa relase)
+- **Revisione:** uno snapshot del progetto
 - **Repository:** Copia master dove GIT memorizza la storia completa delle revisioni di un progetto.
 - **Working copy:** Copia in cui si fanno effettivamente le modifiche.
 - **Check out:** Richiesta di una working copy dal repository.
@@ -119,15 +115,3 @@ PROGRAMMATORE --> PROMOTION --> MASTER DIRECTORY --> RELEASE --> SOFTWARE REPOSI
 - **Log message:** Commento allegato a una revisione quando viene eseguito il commit, descrivendo le modifiche.
 - **Update:** Portare le modifiche degli altri dal repository nella propria working copy.(non voglio avere troppi conflitti con il commit di altri)
 - **Conflict:** Situazione in cui due sviluppatori cercano di commettere modifiche nella stessa regione dello stesso file.
-
-## 8. Utilizzo di GIT
-
-### Corsi e Guide:
-
-- Git per principianti
-- Corso intensivo sul controllo delle versioni, usando git
-
-Link a presentazioni utili:
-
-- [Presentazione 1](https://docs.google.com/presentation/d/1P3SzBeCLlei-xxNYuMzEZMUM8SFrgMdFwHpPi7OJhBA/edit#slide=id.p)
-- [Presentazione 2](https://docs.google.com/presentation/d/1UJSlD9pGOY5A_PhwZ1-7U3vYYep9M9IpqFGmYQPYado/edit?usp=sharing)
