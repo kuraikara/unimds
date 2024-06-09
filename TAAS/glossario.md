@@ -14,3 +14,5 @@ In questo modo si può cambiare la classe referenziata senza dover modificare il
 # Single page application
 
 è una applicazione web in cui la maggior parte delle interazioni vengono gestite lato client senza il bisogno di comunicare con il server con l'obbiettivo di fornire una esperienza utente più fluida e veloce. (no ricaricamenti di pagina)
+
+alla prima interazione con il server ricevo html e poi solo dati
