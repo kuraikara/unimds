@@ -4,12 +4,14 @@ Infrastruttura di integrazione di servizi software, che permette di creare appli
 
 ## Pima e dopo SOA
 
+![alt text](image-12.png)
+
 Prima di SOA, le applicazioni erano monolitiche, ovvero composte da un unico blocco di codice. Questo rendeva difficile la manutenzione e l'aggiornamento delle applicazioni, in quanto era necessario modificare l'intero codice sorgente. Essendo la funzione aziendale molto grande, dovrà accedere e modificare diversi dati in database diversi.
 
 Con l'avvento di SOA, le applicazioni sono state suddivise in servizi software, che possono essere sviluppati, testati e distribuiti in modo indipendente. Questo ha permesso di creare applicazioni distribuite, basate su servizi, che possono essere facilmente scalate e aggiornate.
 Dai grandi monoliti vengono estratte funzionalità e servizi che possono essere utilizzati da più applicazioni : ** Reusable Business Services **.
 
-## stratificazione del software
+### stratificazione del software
 
 ![alt text](image.png)
 
@@ -31,15 +33,15 @@ Dopo arrivato XML con Web Services SOAP, che permette di far comunicare applicaz
 
 ### Web usage shift
 
-Il web passa da human centric a application centric, ovvero da un web in cui l'utente naviga tra le pagine web (transazioni iniziate dall' utente), a un web in cui il grosso è fatto dalle applicazioni comunicano tra loro (Es. ricerca compagnie aeree online).
+Il web passa da **human centric a application centric**, ovvero da un web in cui l'utente naviga tra le pagine web (transazioni iniziate dall' utente), a un web in cui il grosso è fatto dalle applicazioni comunicano tra loro (Es. ricerca compagnie aeree online).
 
 ### Cosa sono i Web Services?
 
-- Incapsulati: i servizi sono indipendenti e possono essere utilizzati da più applicazioni
+- Incapsulati: l'implelemtazione è nascosta all'esterno che ne vede solo l'interfaccia
 - loosely coupled: i servizi sono indipendenti e possono essere utilizzati da più applicazioni
 - contracted software objects: i servizi sono definiti da un contratto, che specifica i parametri di input e output (rispettare le api)
 - Disponibili sulla rete
-- Usano standard XML per la comunicazione
+- Usano standard XML per la comunicazione + HTTP o TCP/IP
 - Indipendenti da OS e linguaggio di programmazione
 - Autodescriventi tramite XML
 - Published public interface: possono avere metodi privati che non sono accessibili dallesterno
@@ -73,9 +75,9 @@ Aggiungendo delle info di semantica alla descrizione dei WS si poteva magicament
 
 - Contracted: la descrizione è visibile al consumatore
 - Protocolli standard:
-- - TCP/IP: trasporto (soap può comunicare su tcp/ip non come rest solo su http, )
-- - HTTP: trasporto (soap può comunicare su tcp/ip non come rest solo su http, )
-- - XML: dialetti WSlD e SOAP e UDDI
+  - TCP/IP: trasporto (soap può comunicare su tcp/ip non come rest solo su http, )
+  - HTTP: trasporto (soap può comunicare su tcp/ip non come rest solo su http, )
+  - XML: dialetti WSlD e SOAP e UDDI
 
 ### Remote Procedure Call (RPC) style
 
@@ -99,7 +101,7 @@ Usa messaggi asincroni
 - SOAP Header: informazioni di servizio
 - SOAP Body: contenuto del messaggio
 
-![alt text](image-4.png)
+![alt text](image-13.png)
 
 Nel document style il body contiene il payload(es. ordine), nel RPC style il body contiene il metodo e i parametri formali e attuali
 

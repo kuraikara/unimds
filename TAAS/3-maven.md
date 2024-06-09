@@ -23,22 +23,33 @@ Permette anche di produrre java doc e unit test.
 
 ## POM
 
+Project Object Model
+
+Usa XML di default.
+
 Descrive il progetto indicando:
 
 - nome e versione
+- tipo di artefatto
 - source code location
 - dipendenze
-- plugin
+- plugins
+- profili: permettono di definire configurazioni di build diverse per ambienti diversi
 
 Maven identifica univocamente i progetti usando la tripletta groupId, artifactId e version (GAV).
 
-- groupId: identifica il progetto
+- groupId: identifica un gruppo di progetti
 - artifactId: identifica il progetto
 - version: identifica la versione del progetto
 
-Puo' essere definita il tipo di packaging da effettuare dopo una build, ad esempio jar, war, ear, ecc.
+Puo' essere definita il tipo di packaging da effettuare dopo una build, ad esempio jar, war, ear, ecc. : di a maven come deve essere buildato il progetto
 
-implementa un meccanismi di ereditarietà delle configurazioni, in modo da poter definire un modello di build comune per tutti i progetti.
+implementa un meccanismi di ereditarietà delle configurazioni, in modo da poter definire un modello di build comune per tutti i progetti. : tramite tag parent inserendo allinterno un GAV
+
+## Multi Model Project
+
+ogni progetto ha il suo pom.xml.
+se si vuole creare un progetto con più moduli. si crea un parent pom con allinterno dichiarati i moduli `<modules></modules>`
 
 ## Comandi principali
 

@@ -68,7 +68,7 @@ il frontend non si può collegare direttamente al db
 
 ## Come fare la comunicazione?
 
-con il fatto che sono tutti indipendenti è meglio avere una comunicazione sincrona RPC ma fare un scambio di messaggi con i MOM.
+con il fatto che sono tutti indipendenti è meglio non avere una comunicazione sincrona RPC ma fare un scambio di messaggi con i MOM.
 
 Tio rabbitMQ: se ho due db clienti e ordini ho dei dati ripetuti e quando faccio un aggiornamente devo anche andare a modificare laltro e a questo punto uso rabbit per scambiare messaggi tra i due servizi
 
@@ -181,6 +181,8 @@ bisogna coordinare i servizi, start order, stop order, ecc..
 automizzo le versioni su git hub e faccio versioning delle immagini docker e poi faccio il deploy su kubernetes
 
 ### release pipeline
+
+![alt text](image-13.png)
 
 - ogni servizio ha il suo pipeline di deploy
 - ogni servizio ha il suo test
@@ -322,7 +324,8 @@ Se lazienda vuole fare il passggio completo con un approccio incrementale e cont
 
 ### Competing workers pattern
 
-- un servizio manda un messaggio e tanti servizi lo ricevono e fanno qualcosa
+- un servizio manda un messaggio e tanti servizi uguali lo ricevono
+- solo uno processera la richiesta
 - publish subscribe
 - in una situazione classica non si fa
 
@@ -333,6 +336,8 @@ Se lazienda vuole fare il passggio completo con un approccio incrementale e cont
 ### sincrono/asincrono pattern
 
 il client invoca le api di un servizio, inizia un task in background e invia ack e poi usare la callback per dire che è finito
+
+## API Architectural Patterns
 
 ### Facade pattern
 
@@ -349,12 +354,15 @@ il client invoca le api di un servizio, inizia un task in background e invia ack
 - chiamate più costose
 - rest non tiene lo stato della sessione
 
+## Composition patterns
+
 ### Broker composition pattern
 
 ![alt text](image-3.png)
 
 - api o comunicano con i servizi o con message broker
 - message broker: fa da composition tra i servizi, mette i task in una queue e li smaltisce tra i servizi
+- SAGA
 
 ### Aggregator pattern
 
@@ -376,6 +384,9 @@ il client invoca le api di un servizio, inizia un task in background e invia ack
 
 ![alt text](image-6.png)
 
+Invece di esporre diversi servizi utilizziamo un api gateway, questo ci permette di effettuare tutte le chiamate al gateway che le smister`a al microservizio
+opportuno.
+
 ### Branch composition pattern
 
 ![alt text](image-7.png)
@@ -394,7 +405,12 @@ il client invoca le api di un servizio, inizia un task in background e invia ack
 - devo avere un gestore delle transazioni oppure saga pattern
 - più costoso
 
-### Saga pattern
+## Saga pattern
+
+Ne esistono principalmente due tipi:
+• events/choreography → nessun coordinatore, i servizi portano avanti la
+saga senza avere qualcuno che li controlli, ma lavorando insieme
+• commands/orchestration → controllo centralizzato, gestito da un orchestratore
 
 - definisco un log file
 - ho un servizio Saga execution coordinator (SEC) che gestisce le richieste di compensazione: se qualcosa va male devo compensare da unaltra parte
@@ -411,7 +427,7 @@ il client invoca le api di un servizio, inizia un task in background e invia ack
 - solo se le inconsistenze sono rare
 - faccio una catch quando avviene linconsistenza
 
-### RIAASUNTO
+## RIAASUNTO
 
 - brownfield: se ho già un sistema poso avere un sistema ibrido e scollegare solo delle parti in maniera incrementale
 - greenfield: posso fare tutto da zero, molto raro, incrementale per modificare i famosi boundary
