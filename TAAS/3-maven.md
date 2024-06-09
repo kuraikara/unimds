@@ -17,9 +17,9 @@ Permette anche di produrre java doc e unit test.
 
 - read: legge il file pom.xml
 - build:
-- controlla le dipendenze su un repository locale
-- se non le trova le scarica da un repository remoto
-- compila il codice, esegue le fasi della build o il goal specificato
+  - controlla le dipendenze su un repository locale
+  - se non le trova le scarica da un repository remoto
+  - compila il codice, esegue le fasi della build o il goal specificato
 
 ## POM
 

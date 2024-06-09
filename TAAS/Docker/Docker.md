@@ -1,4 +1,4 @@
-# Tecniche e Architetture Avanzate per lo Sviluppo del Software
+# Tecniche e Architetture Avanzate per lo viluppo del Softwar
 
 ### A.A. 2023-2024
 
