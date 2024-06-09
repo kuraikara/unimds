@@ -2,12 +2,22 @@
 
 Infrastruttura di integrazione di servizi software, che permette di creare applicazioni distribuite, basate su servizi, in modo efficiente e scalabile.
 
+Nasce come evoluzione delle architetture legacy per poi essere sorpassata dalle architetture a microservizi.
+
 ## Pima e dopo SOA
 
-Prima di SOA, le applicazioni erano monolitiche, ovvero composte da un unico blocco di codice. Questo rendeva difficile la manutenzione e l'aggiornamento delle applicazioni, in quanto era necessario modificare l'intero codice sorgente. Essendo la funzione aziendale molto grande, dovrà accedere e modificare diversi dati in database diversi.
+Prima di SOA, Silos verticali che realizzano funzioni aziendali:
 
-Con l'avvento di SOA, le applicazioni sono state suddivise in servizi software, che possono essere sviluppati, testati e distribuiti in modo indipendente. Questo ha permesso di creare applicazioni distribuite, basate su servizi, che possono essere facilmente scalate e aggiornate.
-Dai grandi monoliti vengono estratte funzionalità e servizi che possono essere utilizzati da più applicazioni : ** Reusable Business Services **.
+- impossibile rilasciare i silos in modo indipendente, o tutto o niente
+- connessioni a database intricate, su funzioni aziendali complesse è difficile da mantenere
+
+Con l'avvento di SOA, le applicazioni sono state suddivise in servizi software, che possono essere **sviluppati, testati e distribuiti** in modo indipendente. Questo ha permesso di creare applicazioni distribuite, basate su servizi, che possono essere facilmente scalate e aggiornate.
+
+Il Composed business process si occupa di orchestrare i servizi, e di gestire le transazioni.
+
+- L'obbiettivo è quello di estrarre servizi indipendenti in modo tale da renderli risuabili e da poterli rilasciare in modo indipendente senza dover fare il redeploy di tutta l'applicazione.
+- Meno interdipendenze tra i servizi, più facile da mantenere e scalare.
+- Meno interconnesioni, ogni servizio accede ai soli dati di cui ha bisogno.
 
 ## stratificazione del software
 
@@ -31,7 +41,13 @@ Dopo arrivato XML con Web Services SOAP, che permette di far comunicare applicaz
 
 ### Web usage shift
 
-Il web passa da human centric a application centric, ovvero da un web in cui l'utente naviga tra le pagine web (transazioni iniziate dall' utente), a un web in cui il grosso è fatto dalle applicazioni comunicano tra loro (Es. ricerca compagnie aeree online).
+Passaggio da **human centric**:
+
+- un web in cui l'utente naviga tra le pagine web (transazioni iniziate dall' utente),
+
+a **application centric**:
+
+- web in cui l'interazione e fatta tra applicazioni (Es. ricerca compagnie aeree online). Le companie sono costrette a offrire servizi web per rimanere competitive.
 
 ### Cosa sono i Web Services?
 
@@ -77,13 +93,15 @@ Aggiungendo delle info di semantica alla descrizione dei WS si poteva magicament
 - - HTTP: trasporto (soap può comunicare su tcp/ip non come rest solo su http, )
 - - XML: dialetti WSlD e SOAP e UDDI
 
-### Remote Procedure Call (RPC) style
+### Modi per usare i web services
+
+- Remote Procedure Call (RPC) style (Sync)
 
 ![alt text](image-2.png)
 
 Invio di un messaggio SOAP con un metodo e dei parametri, il servizio elabora la richiesta e manda la risposta in modo sincrono
 
-### Document style
+- Document style (Async)
 
 ![alt text](image-3.png)
 
@@ -96,22 +114,18 @@ Usa messaggi asincroni
 
 ### Formato dei messaggi SOAP
 
-- SOAP Header: informazioni di servizio
-- SOAP Body: contenuto del messaggio
+- SOAP Header: dati opzioni sulla chiamata stessa
+- SOAP Body: contiene i data delle chiamate o i risultati di ritorno di tali chiamate
 
 ![alt text](image-4.png)
 
-Nel document style il body contiene il payload(es. ordine), nel RPC style il body contiene il metodo e i parametri formali e attuali
+Nel document style il body contiene il payload (es. ordine), nel RPC style il body contiene il metodo e i parametri formali e attuali
 
 Nel ritorno in document style il body contiene l'ack, nel RPC style il body contiene il valore di ritorno
 
-#### Gestione eccezioni
-
-- Fault: eccezione
-- Code: codice errore
-  bisoogna gestire le eccezioni in modo da non far crashare il servizio
-
 ### WSDL
+
+Permette ai web service di auto descriversi.
 
 Descrivo la parte astrastta che contiene la descrizione ad alto livello delle funzionalità offerte dal servizio, la parte dettagliata invece descrive com bisogna invocare il servizio
 
@@ -133,14 +147,6 @@ Definizioni:
 
 ORA SI CAPISCE PERCHè è COSì POTENTE, MI PERMETTE DI FARE PROGRAMMAZIONE DISTRIBUITA IN MODO FACILE, IN REST POSSO SOLAMENTE FARE RICHIESTE E ASPETTARMI DEI DATI IN RITORNO, IN SOAP POSSO FARE UNA VERA E PROPRIA PROGRAMMAZIONE DISTRIBUITA, RICHIAMARE METODI DI ALTRI
 
-### Domande a cui vogliamo rispondere
-
-- Chi mette a disposizione il servizio?
-- é gratis?
-- Che Quality of Service ci aspettiamo? (es. carte di credito, dati sensibili)
-- Quale tipo di business mette a disposizione il servizio?
-- Quali altri servizi sono disponibili per il mio servizio?
-
 ## UDDI
 
 Lanciato da IBM e Microsoft
@@ -148,18 +154,22 @@ Lanciato da IBM e Microsoft
 ### Architettura
 
 - UDDI data model: XML schema per descrivere i servizi e le aziende
-- UDDI api:api SOAP per interrogare il registro e pubblicare servizi
-- UDDI cloud service: sincronizzazione tra registri
+- UDDI api: api SOAP per interrogare il registro e pubblicare servizi
+- UDDI cloud service: sititra registri
+  - organizzato per categorie
+  - un endpoint non contiente tutto il registry, contiene una categoria
 
 ### UDDI XML schema
 
 Definisce quattro tipi di informazioni:
 
-- Business: informazioni sullazienda(anche di contatto)
-- Service: informazioni sul servizio a livello generale in linguaggio naturale
-- Binding information: informazioni specifiche su come invocare il servizioù
+- Business: informazioni sull' azienda (anche di contatto)
+- Service: descrizione del servizio
+- Binding information: informazioni specifiche su come invocare il servizio
 - Service specification information: informazioni generale sulle api
+
   ![alt text](image-6.png)
+
   ![alt text](image-5.png)
 
 ### Mappare WSDL in UDDI

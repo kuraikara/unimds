@@ -39,7 +39,6 @@
 - più semplice da sviluppare
 - più semplice da deployare
 - più semplice trovare le cose
-
 - va bene per applicazioni più piccole
 - problemi: SCALABILITà tanti sviluppatori, tati dati, tanti utenti, difficile da mantenere
 
@@ -116,6 +115,7 @@ Può racchiudere il load balancer
 - se un servizio si aggiorna eureka lo sa e lo aggiorna
 - se un servizio si aggiunge eureka lo sa e lo aggiunge
 - se un servizio si toglie eureka lo sa e lo toglie
+
 <!-- in una situazione con tanti servizi vengono registrati in modo da sapere quali e dove sono quando cè bisogn -->
 
 ## Distribuited monoliths
@@ -305,11 +305,8 @@ Se lazienda vuole fare il passggio completo con un approccio incrementale e cont
 - loosele coupling: cerco di non fare servizi troppo interdipendenti
 - high cohesion: cerco di fare servizi che fanno una cosa sola bene
 - Trovare i concetti chiave come crc cards, vedere cosa sta fuori da questi concetti e che dovranno comunicare
-
 - devo farmi aiutare anche sui contesti(ospedale, accessibile solo internamente o esternamente)
-
 - contesti non sono sempre facili da definire
-
 - Aggreghiamo o decomponiamo i servizi in base a come si evolvono
 
 ## Asynchronous communication
@@ -398,10 +395,8 @@ il client invoca le api di un servizio, inizia un task in background e invia ack
 
 - definisco un log file
 - ho un servizio Saga execution coordinator (SEC) che gestisce le richieste di compensazione: se qualcosa va male devo compensare da unaltra parte
-
 - se le richieste vanno a buon fine scrive nei log non fa nulla e termina
 - se non va a buon fine deve fare una compensating request e fare un undo delle operazioni fatte altrimenti db inconsistenti
-
 - implementazione sempre con rest e json
 
 ### Eventual consistency
@@ -457,8 +452,8 @@ consumer manda un ack per dire che ho ricevuto il messaggio
 - direct: manda il messaggio a una coda specifica
 - fanout: manda il messaggio a tutte le code
   ![alt text](image-10.png)
-
 - topic: manda il messaggio a una coda che ha un certo pattern
+
   - come pub/sub devo essere iscritto a un topic
 
 ![alt text](image-11.png)
