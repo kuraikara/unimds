@@ -136,15 +136,15 @@ Si individuano i concetti alla base del dominio e i concetti che invece sono fuo
   - **Stateless pattern**: Non voglio mantere lo stato all'interno del servzio perciò lo scambio ogni volta nella richiesta.
 - composizione di servizi:
   - **Broker composition**: Una coda di task che vengono processati da più servizi.
-    ![alt text](https://file+.vscode-resource.vscode-cdn.net/d%3A/UnitoStuff/RelaxAndTakeNotes/TAASS/micros/image-3.png)
+    ![alt text](image-3.png)
   - **Aggregate composition**: Un servizio che aggrega i risultati di più servizi.
-  - ![alt text](https://file+.vscode-resource.vscode-cdn.net/d%3A/UnitoStuff/RelaxAndTakeNotes/TAASS/micros/image-4.png)
+  - ![alt text](image-4.png)
   - **Chained composition**: Un servizio che chiama un altro servizio che chiama un altro servizio. Invocazione concatenata di servizi.
-    ![alt text](https://file+.vscode-resource.vscode-cdn.net/d%3A/UnitoStuff/RelaxAndTakeNotes/TAASS/micros/image-5.png)
+    ![alt text](image-5.png)
   - **Proxy composition**: Api gateway che fa da proxy per chiamare i servizi.
-  - ![alt text](https://file+.vscode-resource.vscode-cdn.net/d%3A/UnitoStuff/RelaxAndTakeNotes/TAASS/micros/image-6.png)
+  - ![alt text](image-6.png)
   - **Branch composition**: Un ibrido tra chained e aggregate composition.
-  - ![alt text](https://file+.vscode-resource.vscode-cdn.net/d%3A/UnitoStuff/RelaxAndTakeNotes/TAASS/micros/image-7.png)
+  - ![alt text](image-7.png)
 - data consistency:
   - **Two-phase commit**
   - **Saga pattern**:

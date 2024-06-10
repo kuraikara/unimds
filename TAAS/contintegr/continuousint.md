@@ -73,6 +73,7 @@ con piccole immagini di kubernetes è uguale
 - **Blue green deployment**
 
 ![alt text](image-2.png)
+
 router: posso indirizzare dove voglio con apigateway
 devo far testare nuova versione?
 cambio da blu a verde dal router gli utenti la usano e se non va a buon fine faccio rollback, velocissimo cambio solamente i lkservizio
@@ -80,12 +81,14 @@ cambio da blu a verde dal router gli utenti la usano e se non va a buon fine fac
 - **canary deployment**
 
 ![alt text](image-3.png)
+
 sono più incerto non sposto tutti gli utenti ma solo una parte e vedo se va bene
 ho un confronto tra la nuova e la vecchia versione
 
 - **feature flags**
 
 ![alt text](image-4.png)
+
 ho dei flag nel codice che mi permette di dare le features nuove solamente a una parte degli utenti(o stampare cose)
 
 ## DevOps
